@@ -1,3 +1,7 @@
+// James Struble
+// 12/8/2024
+// Controls the a potential Speed Up UI (was cut from final project, left script in here so you could see what might've been)
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,11 +10,10 @@ using UnityEngine;
 
 public class SpeedUpUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] GameManager gameManager;
+    [SerializeField] GameManager gameManager; 
     private float displayTimer;
     private bool showing = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         Hide();
