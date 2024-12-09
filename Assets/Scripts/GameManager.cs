@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
         Level1,
         Level2,
         Level3,
-        GameOver
+        GameOver,
+        GameWon
     }
 
     private State state;
@@ -52,6 +53,11 @@ public class GameManager : MonoBehaviour
     private void LockpickBehavior_OnSuccessfulLockPick(object sender, EventArgs e)
     {
         score++; // Increase score
+        if (score >= 100) // Win Condition
+        {
+            state = State.GameWon;
+            OnStateChanged?.Invoke(this, EventArgs.Empty);
+        }
         OnScoreChanged?.Invoke(this, EventArgs.Empty); // Fire OnScoreChanged event
         Destroy(pickPoint); // Destroy the current pick point
         spawnPickPoint(); // Spawn a new pick point
@@ -100,6 +106,8 @@ public class GameManager : MonoBehaviour
                 break;
             case State.GameOver:
                 break;
+            case State.GameWon:
+                break;
         }
     }
 
@@ -137,6 +145,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(HI_SCORE, score); // Set HI_SCORE to score
         }
+        //PlayerPrefs.SetInt(HI_SCORE, 0); // Used to reset the HI_SCORE before turn in
     }
 
     public int GetHighScore() // Checks if previous HI_SCORE in PlayerPrefs has been beaten, then returns HI_SCORE as an int
@@ -148,6 +157,10 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver() // Public function that returns the truth value of whether or not game state is GameOver as a bool
     {
         return state == State.GameOver;
+    }
+    public bool IsGameWon() // Public function that returns the truth value of whether or not game state is GameWon as a bool
+    {
+        return state == State.GameWon;
     }
     public bool IsWaitingToStart() // Public function that returns the truth value of whether or not game state is WaitingToStart as a bool
     {

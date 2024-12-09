@@ -27,7 +27,7 @@ public class ScoreUI : MonoBehaviour
 
     private void GameManager_OnStateChanged(object sender, EventArgs e)
     {
-        if(gameManager.IsGameOver() || gameManager.IsStartCountdown() || gameManager.IsWaitingToStart()) // When stat is changed, if game hasn't started or has ended
+        if(gameManager.IsGameOver() || gameManager.IsStartCountdown() || gameManager.IsWaitingToStart() || gameManager.IsGameWon()) // When stat is changed, if game hasn't started or has ended
         {
             Hide(); // Hide Score UI elements
         } else 

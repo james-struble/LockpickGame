@@ -36,11 +36,6 @@ public class StartCountdownUI : MonoBehaviour
     {
         int countdownNumber = Mathf.CeilToInt(gameManager.GetStartCountdownTimer()); // Countdown number = GetCountdownTimer() value rounded up
         countdownText.text = countdownNumber.ToString(); // Change text to current value of countdownNumber
-
-        //if (previousCountdownNumber != countdownNumber)  // 
-        //{
-        //    previousCountdownNumber = countdownNumber;
-        //}
     }
 
     private void Show() // Show Countdown UI elements

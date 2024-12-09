@@ -42,7 +42,7 @@ public class LockpickBehavior : MonoBehaviour
             speed += 30;
         }
 
-        if (gameManager.IsGameOver() || gameManager.IsStartCountdown() || gameManager.IsWaitingToStart())
+        if (gameManager.IsGameOver() || gameManager.IsStartCountdown() || gameManager.IsWaitingToStart() || gameManager.IsGameWon())
         {
             speed = 0;
         }
@@ -52,7 +52,7 @@ public class LockpickBehavior : MonoBehaviour
     {
         transform.RotateAround(rotationTarget.transform.position, new Vector3(0,0,-1), speed * lockpickDirection * Time.deltaTime); // Moves lockpick in a circle around the center of the lock.
         
-        if (Input.GetKeyDown(KeyCode.Space) && !(gameManager.IsGameOver() || gameManager.IsStartCountdown() || gameManager.IsWaitingToStart())) // If player presses Space and game has started and hasn't ended
+        if (Input.GetKeyDown(KeyCode.Space) && !(gameManager.IsGameOver() || gameManager.IsStartCountdown() || gameManager.IsWaitingToStart() || gameManager.IsGameWon())) // If player presses Space and game has started and hasn't ended
         {
             if (inLock) // If lockpick is overlapping a pick point
             {

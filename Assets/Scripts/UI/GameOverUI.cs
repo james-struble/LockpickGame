@@ -13,6 +13,7 @@ using UnityEngine;
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField] GameManager gameManager; // Reference to GameManger script for event listening, state checking, and function calling
+    [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI hiScoreText;
     [SerializeField] private Button retryButton;
@@ -34,6 +35,14 @@ public class GameOverUI : MonoBehaviour
         if (gameManager.IsGameOver()) // Check if game has ended
         {
             Show(); // Show all Game Over UI elements
+            scoreText.text = gameManager.GetScore().ToString(); // Change scoreText to score of current game
+            hiScoreText.text = gameManager.GetHighScore().ToString(); // Change hiScoreText to Highscore saved in PlayerPrefs
+        }
+
+        if (gameManager.IsGameWon())
+        {  
+            Show(); // Show all Game Over UI elements
+            gameOverText.text = "YOU WIN";
             scoreText.text = gameManager.GetScore().ToString(); // Change scoreText to score of current game
             hiScoreText.text = gameManager.GetHighScore().ToString(); // Change hiScoreText to Highscore saved in PlayerPrefs
         }

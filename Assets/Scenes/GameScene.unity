@@ -2196,6 +2196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1612749799}
+  gameOverText: {fileID: 316529019}
   scoreText: {fileID: 540458282}
   hiScoreText: {fileID: 2110630528}
   retryButton: {fileID: 1413244231}
